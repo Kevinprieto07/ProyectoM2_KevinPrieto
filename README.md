@@ -75,9 +75,10 @@ Los tests usan una base de datos separada (`miniblog_test`), para no afectar tus
 
 ## Documentación OpenAPI
 
-Dos formas de verla:
+Tres formas de verla:
 
-- **En vivo**, con el servidor corriendo: `http://localhost:3000/api-docs`
+- **En producción**: https://proyectom2kevinprieto-production.up.railway.app/api-docs
+- **En local**, con el servidor corriendo: `http://localhost:3000/api-docs`
 - **Sin levantar el servidor**: pega el contenido de [`openapi.yaml`](./openapi.yaml) en [editor.swagger.io](https://editor.swagger.io)
 
 ## Endpoints
@@ -100,4 +101,17 @@ Dos formas de verla:
 | POST | /posts | Crear post |
 | PUT | /posts/:id | Actualizar post |
 | DELETE | /posts/:id | Borrar post |
+
+## Deployment (Railway)
+
+1. Crea un proyecto en [Railway](https://railway.app) y agrega un servicio de PostgreSQL.
+2. Conecta este repositorio de GitHub como otro servicio dentro del mismo proyecto.
+3. Configura las variables de entorno del servicio de la API:
+   - `DATABASE_URL`: referencia la variable interna del servicio de Postgres (`${{Postgres.DATABASE_URL}}`, seleccionada desde el autocompletado de Railway).
+   - `PORT`: no se define a mano, Railway la asigna automáticamente.
+4. Genera un dominio público para la API (Settings → Networking → Generate Domain).
+5. Habilita el acceso público del servicio de Postgres (Settings → Networking → Add Public Access) para poder correr los scripts SQL desde tu máquina.
+6. Corre `sql/setup.sql` contra la base de datos de producción usando el connection string público de Postgres.
+
+**URL de producción:** https://proyectom2kevinprieto-production.up.railway.app
 
