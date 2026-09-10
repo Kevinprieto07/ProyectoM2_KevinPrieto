@@ -42,6 +42,24 @@ describe('POST /authors', () => {
   });
 });
 
+describe('PUT /authors/:id', () => {
+  it('actualiza un author existente y responde 200', async () => {
+    const created = await request(app).post('/authors').send({
+      name: 'Original',
+      email: 'original@miniblog.dev',
+    });
+
+    const res = await request(app).put(`/authors/${created.body.id}`).send({
+      name: 'Actualizado',
+      email: 'original@miniblog.dev',
+      bio: 'Bio nueva',
+    });
+
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Actualizado');
+  });
+});
+
 describe('GET /authors/:id', () => {
   it('responde 404 si el author no existe', async () => {
     const res = await request(app).get('/authors/9999');
