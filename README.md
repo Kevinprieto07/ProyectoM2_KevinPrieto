@@ -1,6 +1,6 @@
 # MiniBlog API
 
-API REST para gestionar `authors` y `posts`, desarrollada para DevSpark como base del servicio de contenidos MiniBlog. Construida con Node.js, Express y PostgreSQL, con queries SQL parametrizadas (sin ORM).
+API REST para gestionar `authors` y `posts`, "desarrollada para DevSpark" como base del servicio de contenidos MiniBlog. Construida con Node.js, Express y PostgreSQL, con queries SQL parametrizadas (sin ORM).
 
 ## Stack
 
@@ -114,4 +114,11 @@ Tres formas de verla:
 6. Corre `sql/setup.sql` contra la base de datos de producción usando el connection string público de Postgres.
 
 **URL de producción:** https://proyectom2kevinprieto-production.up.railway.app
+
+
+## Uso de IA
+- El uso de IA referente al código se encuentra en la carpeta Documentación IA como un archivo PDF que corrresponde al chat exportado directamente de Claude.
+- La IA se utilizó directamente en el código para la elaboración de tests, crear la seed.sql con información de prueba y elaboración del Openapi.yaml y parte del Readme.md.
+
+(Todas las modificaciónes de IA fueron revisadas y validadas por mi (Kevin Prieto), desarrollador del archivo) 
 
